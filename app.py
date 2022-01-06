@@ -33,6 +33,12 @@ def handle_message(event):
      message = TextSendMessage(text=event.message.text)
      line_bot_api.reply_message(event.reply_token, message)
 
+     
+user_id = 'Uc6863db56ab67a977fdda93786921cf8'
+@app.route("/push_function/<string:push_text_str>")
+def push_message(push_text_str):
+    line_bot_api.push_message(user_id, TextSendMessage(text=push_text_str))
+
 @app.route('/')
 def index():
     return 'Hello World'
