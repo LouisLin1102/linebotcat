@@ -7,6 +7,7 @@ from linebot.exceptions import (
  )
 from linebot.models import *
 import os
+import requests
 
 app = Flask(__name__)
 #  Channel Access Token
@@ -39,6 +40,14 @@ user_id = 'Uc6863db56ab67a977fdda93786921cf8'
 def push_message(push_text_str):
     line_bot_api.push_message(user_id, TextSendMessage(text=push_text_str))
 
+class LintBotFunction:
+     def __init__(self,push_str,webhook_url):
+          self.push_str = push_str
+          self.webhook_url = webhook_url
+          
+     def push_message(self):
+          requests.get(self.webhook_url + self.push_str)
+
 @app.route('/')
 def index():
     return 'Hello World'
@@ -46,3 +55,7 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+    webhook_url = "https://linebotforcat.herokuapp.com/push_function/"
+    push_str = "test"
+    lineBot = LintBotFunction(push_str, webhook_url)
+    lineBot.push_message()
