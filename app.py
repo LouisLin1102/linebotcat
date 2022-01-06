@@ -33,7 +33,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "image":
-        message = ImageSendMessage(original_content_url='https://ithelp.ithome.com.tw/storage/image/ironman13thsidebar.png',    preview_image_url='https://ithelp.ithome.com.tw/storage/image/ironman13thsidebar.png')
+        message = ImageSendMessage(original_content_url='https://storage.cloud.google.com/grounded-plane-332001.appspot.com/temp/1.jpg',    preview_image_url='https://storage.cloud.google.com/grounded-plane-332001.appspot.com/temp/1.jpg')
     else:  
         message = TextSendMessage(text=event.message.text)
 
