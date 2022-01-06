@@ -1,3 +1,4 @@
+  
 from flask import Flask, request, abort
 from linebot import (
      LineBotApi, WebhookHandler
@@ -31,10 +32,9 @@ def callback():
 #  處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-     message = TextSendMessage(text=event.message.text)
-     line_bot_api.reply_message(event.reply_token, message)
+    message = TextSendMessage(text=event.message.text)
+    line_bot_api.reply_message(event.reply_token, message)
 
-     
 user_id = 'Uc6863db56ab67a977fdda93786921cf8'
 @app.route("/push_function/<string:push_text_str>")
 def push_message(push_text_str):
@@ -42,11 +42,11 @@ def push_message(push_text_str):
 
 class LintBotFunction:
      def __init__(self,push_str,webhook_url):
-          self.push_str = push_str
-          self.webhook_url = webhook_url
+        self.push_str = push_str
+        self.webhook_url = webhook_url
           
      def push_message(self):
-          requests.get(self.webhook_url + self.push_str)
+        requests.get(self.webhook_url + self.push_str)
 
 @app.route('/')
 def index():
