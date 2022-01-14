@@ -33,7 +33,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     if event.message.text == "image":
-        message = ImageSendMessage(original_content_url='https://storage.googleapis.com/catlife/catlife/image.jpg',    preview_image_url='https://storage.googleapis.com/catlife/catlife/image.jpg')
+        message = ImageSendMessage(original_content_url='https://storage.cloud.google.com/catlife/temp/image.jpg',    preview_image_url='https://storage.cloud.google.com/catlife/temp/image.jpg')
     else:  
         message = TextSendMessage(text=event.message.text)
 
